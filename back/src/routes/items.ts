@@ -4,6 +4,13 @@ import { eq } from 'drizzle-orm';
 
 const router = Router();
 
+// Helper function to parse and validate item ID
+const parseItemId = (id: string | string[]): number | null => {
+  const idStr = String(id);
+  const parsed = parseInt(idStr, 10);
+  return isNaN(parsed) ? null : parsed;
+};
+
 // Get all items
 router.get('/', async (req: Request, res: Response) => {
   try {
@@ -18,8 +25,8 @@ router.get('/', async (req: Request, res: Response) => {
 // Get single item
 router.get('/:id', async (req: Request, res: Response) => {
   try {
-    const id = parseInt(String(req.params.id));
-    if (isNaN(id)) {
+    const id = parseItemId(req.params.id);
+    if (id === null) {
       return res.status(400).json({ error: 'Invalid item ID' });
     }
     
@@ -59,24 +66,32 @@ router.post('/', async (req: Request, res: Response) => {
 // Update item
 router.put('/:id', async (req: Request, res: Response) => {
   try {
-    const id = parseInt(String(req.params.id));
-    if (isNaN(id)) {
+    const id = parseItemId(req.params.id);
+    if (id === null) {
       return res.status(400).json({ error: 'Invalid item ID' });
     }
     
     const { name, quantity, expiryDate } = req.body;
     
-    // Validate input
+    // Validate input - if name is provided, it must be non-empty
     if (name !== undefined && (typeof name !== 'string' || name.trim().length === 0)) {
       return res.status(400).json({ error: 'Name must be a non-empty string' });
     }
     
+    // Build update object - only include fields that are provided
+    const updateData: any = {};
+    if (name !== undefined) {
+      updateData.name = name.trim();
+    }
+    if (quantity !== undefined) {
+      updateData.quantity = quantity;
+    }
+    if (expiryDate !== undefined) {
+      updateData.expiryDate = expiryDate;
+    }
+    
     const [updatedItem] = await db.update(items)
-      .set({ 
-        name: name?.trim(), 
-        quantity, 
-        expiryDate 
-      })
+      .set(updateData)
       .where(eq(items.id, id))
       .returning();
       
@@ -93,8 +108,8 @@ router.put('/:id', async (req: Request, res: Response) => {
 // Delete item
 router.delete('/:id', async (req: Request, res: Response) => {
   try {
-    const id = parseInt(String(req.params.id));
-    if (isNaN(id)) {
+    const id = parseItemId(req.params.id);
+    if (id === null) {
       return res.status(400).json({ error: 'Invalid item ID' });
     }
     

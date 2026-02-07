@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # WimF Starter Script
 # This script helps you get started with the WimF application
