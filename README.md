@@ -46,7 +46,7 @@ cd WimF
 
 2. Start all services:
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 3. Access the application:
@@ -111,27 +111,27 @@ Make sure PostgreSQL is running and update the `.env` file with your database cr
 
 ```bash
 # Start all services
-docker-compose up
+docker compose up
 
 # Start in detached mode
-docker-compose up -d
+docker compose up -d
 
 # Rebuild containers
-docker-compose up --build
+docker compose up --build
 
 # Stop all services
-docker-compose down
+docker compose down
 
 # Stop and remove volumes
-docker-compose down -v
+docker compose down -v
 
 # View logs
-docker-compose logs -f
+docker compose logs -f
 
 # View specific service logs
-docker-compose logs -f front
-docker-compose logs -f back
-docker-compose logs -f db
+docker compose logs -f front
+docker compose logs -f back
+docker compose logs -f db
 ```
 
 ## Project Features
