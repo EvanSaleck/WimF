@@ -1,8 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 
+interface FridgeItem {
+  id: number;
+  name: string;
+  quantity?: string;
+  expiryDate?: string;
+}
+
 function App() {
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState<FridgeItem[]>([])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
@@ -30,9 +37,9 @@ function App() {
             </p>
           ) : (
             <ul className="space-y-2">
-              {items.map((item, index) => (
-                <li key={index} className="p-3 bg-gray-50 rounded-lg">
-                  {item}
+              {items.map((item) => (
+                <li key={item.id} className="p-3 bg-gray-50 rounded-lg">
+                  {item.name}
                 </li>
               ))}
             </ul>

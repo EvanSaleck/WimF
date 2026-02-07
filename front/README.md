@@ -1,6 +1,6 @@
 # Frontend - WimF
 
-React application with Vite, Tailwind CSS, and shadcn/ui components.
+React application with TypeScript, Vite, Tailwind CSS, and shadcn/ui components.
 
 ## Features
 
@@ -9,6 +9,7 @@ React application with Vite, Tailwind CSS, and shadcn/ui components.
 - 🧩 shadcn/ui component library
 - 📱 Responsive design
 - ⚛️ React 18
+- 🔷 TypeScript for type safety
 
 ## Development
 
@@ -43,7 +44,8 @@ docker run -p 80:80 wimf-frontend
 
 ## Tech Stack
 
-- React 18 with Vite
+- React 18 with TypeScript
+- Vite for fast builds
 - Tailwind CSS for styling
 - shadcn/ui components
 - Nginx for production serving

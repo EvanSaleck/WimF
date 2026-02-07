@@ -16,13 +16,15 @@ WimF/
 
 ### Frontend
 - **React** - UI library
+- **TypeScript** - Type-safe JavaScript
 - **Vite** - Build tool and dev server
 - **Tailwind CSS** - Utility-first CSS framework
 - **shadcn/ui** - Component library
 
 ### Backend
 - **Express** - Web framework
-- **Drizzle ORM** - TypeScript ORM
+- **TypeScript** - Type-safe JavaScript
+- **Drizzle ORM** - TypeScript ORM for SQL databases
 - **PostgreSQL** - Database
 
 ### Infrastructure

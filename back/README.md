@@ -1,6 +1,6 @@
 # Backend - WimF
 
-Express.js API with Drizzle ORM and PostgreSQL.
+Express.js API with TypeScript, Drizzle ORM and PostgreSQL.
 
 ## Features
 
@@ -8,6 +8,7 @@ Express.js API with Drizzle ORM and PostgreSQL.
 - 🗄️ Drizzle ORM for database operations
 - 🐘 PostgreSQL database
 - 🔄 RESTful API endpoints
+- 🔷 TypeScript for type safety
 
 ## Setup
 
